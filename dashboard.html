@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Poster Evaluation - Dashboard</title>
+    <title>Poster Evaluation Dashboard</title>
+
+    <!-- External CSS for styling -->
     <link rel="stylesheet" href="dashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js Library -->
+
+    <!-- Chart.js Library for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
 <!-- Header Section -->
 <header class="dashboard-header">
-    <div class="container">
+    <div class="container header-container">
+        <!-- Logo on the left -->
         <div class="logo">
-            <img src="images/logo.png" alt="Logo" class="logo-img">
+            <img src="images/logo.png" alt="Poster Evaluation Logo" class="logo-img">
         </div>
+
+        <!-- Navigation Menu aligned to the right -->
         <nav class="nav-menu">
             <ul>
                 <li><a href="#pie-charts">Pie Charts</a></li>
@@ -26,53 +33,57 @@
     </div>
 </header>
 
-<!-- Main Dashboard -->
+<!-- Main Content Area -->
 <main class="dashboard">
     <div class="container">
-        <!-- Section 1: Pie Charts in One Box -->
+        <!-- Evaluation Scores Section -->
         <section id="pie-charts" class="dashboard-section">
-            <h2>Evaluation by Section (Pie Charts)</h2>
-            <div class="pie-charts-box">
+            <h2>Evaluation Scores (Percentage)</h2>
+            <div class="evaluation-grid">
                 <div class="pie-chart">
                     <canvas id="pieChartFontSize"></canvas>
-                    <p>Font Size Evaluation</p>
+                    <p>Font Size Evaluation: <span id="fontSizeScore">100%</span></p>
                 </div>
                 <div class="pie-chart">
                     <canvas id="pieChartFontStyle"></canvas>
-                    <p>Font Style Evaluation</p>
+                    <p>Font Style Evaluation: <span id="fontStyleScore">92%</span></p>
                 </div>
                 <div class="pie-chart">
                     <canvas id="pieChartColorContrast"></canvas>
-                    <p>Color Contrast Evaluation</p>
+                    <p>Color Contrast Evaluation: <span id="colorContrastScore">80%</span></p>
                 </div>
                 <div class="pie-chart">
                     <canvas id="pieChartLogo"></canvas>
-                    <p>Logo Evaluation</p>
+                    <p>Logo Evaluation: <span id="logoScore">71%</span></p>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: Bar Graph and Overall Score Side by Side -->
-        <section class="side-by-side">
+        <!-- Bar Graph and Overall Score Section - Side by Side -->
+        <section class="graphs-side-by-side">
             <!-- Bar Graph -->
             <div id="bar-graph" class="chart-container">
                 <h2>Overall Evaluation (Bar Chart)</h2>
                 <canvas id="barChart"></canvas>
             </div>
 
-            <!-- Overall Poster Score -->
-            <div id="overall-score" class="score-container">
+            <!-- Overall Poster Score Pie Chart -->
+            <div id="overall-score" class="large-score-container">
                 <h2>Overall Poster Score</h2>
-                <div id="posterScore">
-                    <h1>98%</h1>
-                    <p>Overall Poster Score</p>
+                <div id="posterScore" class="large-score">
+                    <canvas id="overallScorePie"></canvas>
+                </div>
+                <div class="score-legend">
+                    <div class="legend-item"><span class="legend-color good"></span> Good</div>
+                    <div class="legend-item"><span class="legend-color average"></span> Average</div>
+                    <div class="legend-item"><span class="legend-color poor"></span> Poor</div>
                 </div>
             </div>
         </section>
 
         <!-- Download Report Button -->
         <section class="download-section">
-            <button class="download-btn">Download Report <i class="fas fa-download"></i></button>
+            <button class="download-btn" id="downloadBtn">Download Report <i class="fas fa-download"></i></button>
         </section>
     </div>
 </main>
@@ -84,6 +95,7 @@
     </div>
 </footer>
 
-<script src="dashboard-script.js"></script> <!-- External JavaScript -->
+<!-- External JavaScript -->
+<script src="dashboard-script.js"></script>
 </body>
 </html>
