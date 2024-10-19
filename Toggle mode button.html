@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Upload Poster - Poster Evaluation</title>
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="Toggle mode.css">
+</head>
+
+<body class="dark-mode">
+<!-- Header Section -->
+<header class="site-header">
+    <div class="container">
+        <div class="header__logo">
+            <img src="images/logo.png" alt="Poster Evaluation Logo" class="logo-img">
+            <h1 class="header__title">Poster Evaluation</h1>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav aria-label="Primary Navigation" class="nav-menu">
+            <ul class="nav-menu__list">
+                <li class="nav-menu__item"><a href="#">Home</a></li>
+                <li class="nav-menu__item"><a href="#">Guide</a></li>
+                <li class="nav-menu__item"><a href="#">Help</a></li>
+            </ul>
+        </nav>
+
+        <!-- Dark/Light Mode Toggle -->
+        <div class="theme-toggle" aria-label="Theme Toggle">
+            <button id="theme-button" aria-label="Switch Theme" class="theme-toggle__button">🌙</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main Upload Section -->
+<main>
+    <section class="upload-section">
+        <div class="container upload-content">
+            <h1 class="upload-section__title">Upload Poster for Evaluation</h1>
+            <p class="upload-section__description">Ensure your poster meets accessibility standards for all users.</p>
+
+            <form id="posterForm" class="upload-form" enctype="multipart/form-data">
+                <label for="poster-upload" class="upload-form__label">Choose Poster File</label>
+                <input type="file" name="poster" id="poster-upload" accept="image/*" onchange="updateFileName()" class="upload-form__input" aria-label="Upload Poster">
+                <button type="submit" id="submit-btn" class="upload-form__submit">Submit Poster</button>
+            </form>
+
+            <!-- Progress Bar -->
+            <div id="progress-container" class="progress hidden" aria-hidden="true">
+                <div id="progress-bar" class="progress__bar"></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2024 Poster Evaluation for Accessibility. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- External JavaScript -->
+<script src="Toggle mode.js"></script>
+</body>
+
+</html>
