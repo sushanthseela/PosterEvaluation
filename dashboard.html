@@ -3,99 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Poster Evaluation Dashboard</title>
-
-    <!-- External CSS for styling -->
     <link rel="stylesheet" href="dashboard.css">
-
-    <!-- Chart.js Library for charts -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-<!-- Header Section -->
-<header class="dashboard-header">
-    <div class="container header-container">
-        <!-- Logo on the left -->
+<!-- Header and Navigation -->
+<header>
+    <div class="header-content">
+        <!-- Logo Section -->
         <div class="logo">
-            <img src="images/logo.png" alt="Poster Evaluation Logo" class="logo-img">
+            <img src="images/logo.png" alt="Poster Evaluation Logo">
         </div>
 
-        <!-- Navigation Menu aligned to the right -->
+        <!-- Navigation Menu -->
         <nav class="nav-menu">
             <ul>
-                <li><a href="#pie-charts">Pie Charts</a></li>
-                <li><a href="#overall-score">Overall Score</a></li>
-                <li><a href="#bar-graph" class="active">Bar Graph</a></li>
+                <li><a href="#" onclick="redirectToHome()">Home</a></li>
+
+                <li><a href="#"onclick="redirectToAboutpage()">About</a></li>
+                <li><a href="#">Audio</a></li>
             </ul>
         </nav>
+
+        <!-- Selection Controls -->
+        <div class="controls">
+            <label for="selectCriteria">Select Evaluation Category</label>
+            <select id="selectCriteria" onchange="filterEvaluation()">
+                <option value="all">All Criteria</option>
+                <option value="logos">Logos</option>
+                <option value="fontStyle">Font Style</option>
+                <option value="fontSize">Font Size</option>
+                <option value="colorContrast">Color Contrast</option>
+                <option value="PosterLayout">Poster Layout</option>
+                <option value="hyperlinks">Hyperlinks</option>
+                <option value="overallScore">Overall Poster Score</option>
+            </select>
+
+            <label for="selectGraph">Select Graph</label>
+            <select id="selectGraph" onchange="updateGraphDisplay()">
+                <option value="barGraph">Bar Graph</option>
+                <option value="pieChart">Pie Chart</option>
+            </select>
+        </div>
+
+        <!-- Theme Toggle Button -->
+        <div class="theme-toggle">
+            <button id="theme-button" onclick="toggleTheme()">🌙</button>
+        </div>
     </div>
 </header>
 
-<!-- Main Content Area -->
-<main class="dashboard">
-    <div class="container">
-        <!-- Evaluation Scores Section -->
-        <section id="pie-charts" class="dashboard-section">
-            <h2>Evaluation Scores (Percentage)</h2>
-            <div class="evaluation-grid">
-                <div class="pie-chart">
-                    <canvas id="pieChartFontSize"></canvas>
-                    <p>Font Size Evaluation: <span id="fontSizeScore">100%</span></p>
+<!-- Main Evaluation Section -->
+<main class="evaluation-sections">
+    <div class="row">
+        <!-- Logos Evaluation -->
+        <section class="evaluation-category logos">
+            <h2>Logos Evaluation</h2>
+            <div class="evaluation-content">
+                <div class="chart-container pie-chart">
+                    <canvas id="logosPieChart"></canvas>
                 </div>
-                <div class="pie-chart">
-                    <canvas id="pieChartFontStyle"></canvas>
-                    <p>Font Style Evaluation: <span id="fontStyleScore">92%</span></p>
+                <div class="chart-container bar-chart" style="display: none;">
+                    <canvas id="logosBarChart"></canvas>
                 </div>
-                <div class="pie-chart">
-                    <canvas id="pieChartColorContrast"></canvas>
-                    <p>Color Contrast Evaluation: <span id="colorContrastScore">80%</span></p>
-                </div>
-                <div class="pie-chart">
-                    <canvas id="pieChartLogo"></canvas>
-                    <p>Logo Evaluation: <span id="logoScore">71%</span></p>
+                <div class="description">
+                    <p>The system checks the logos for size, clarity, and contrast, ensuring alt text is provided.</p>
+                    <p>Score: <strong>80%</strong></p>
                 </div>
             </div>
         </section>
 
-        <!-- Bar Graph and Overall Score Section - Side by Side -->
-        <section class="graphs-side-by-side">
-            <!-- Bar Graph -->
-            <div id="bar-graph" class="chart-container">
-                <h2>Overall Evaluation (Bar Chart)</h2>
-                <canvas id="barChart"></canvas>
-            </div>
-
-            <!-- Overall Poster Score Pie Chart -->
-            <div id="overall-score" class="large-score-container">
-                <h2>Overall Poster Score</h2>
-                <div id="posterScore" class="large-score">
-                    <canvas id="overallScorePie"></canvas>
+        <!-- Font Style Evaluation -->
+        <section class="evaluation-category fontStyle">
+            <h2>Font Style Evaluation</h2>
+            <div class="evaluation-content">
+                <div class="chart-container pie-chart">
+                    <canvas id="fontStylePieChart"></canvas>
                 </div>
-                <div class="score-legend">
-                    <div class="legend-item"><span class="legend-color good"></span> Good</div>
-                    <div class="legend-item"><span class="legend-color average"></span> Average</div>
-                    <div class="legend-item"><span class="legend-color poor"></span> Poor</div>
+                <div class="chart-container bar-chart" style="display: none;">
+                    <canvas id="fontStyleBarChart"></canvas>
+                </div>
+                <div class="description">
+                    <p>The system checks the font style for readability, ensuring clear fonts are used.</p>
+                    <p>Score: <strong>90%</strong></p>
                 </div>
             </div>
         </section>
 
-        <!-- Download Report Button -->
-        <section class="download-section">
-            <button class="download-btn" id="downloadBtn">Download Report <i class="fas fa-download"></i></button>
+        <!-- Font Size Evaluation -->
+        <section class="evaluation-category fontSize">
+            <h2>Font Size Evaluation</h2>
+            <div class="evaluation-content">
+                <div class="chart-container pie-chart">
+                    <canvas id="fontSizePieChart"></canvas>
+                </div>
+                <div class="chart-container bar-chart" style="display: none;">
+                    <canvas id="fontSizeBarChart"></canvas>
+                </div>
+                <div class="description">
+                    <p>The system evaluates the font size for different sections (title, headings, body text).</p>
+                    <p>Score: <strong>88%</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Contrast Evaluation -->
+        <section class="evaluation-category colorContrast">
+            <h2>Color Contrast Evaluation</h2>
+            <div class="evaluation-content">
+                <div class="chart-container pie-chart">
+                    <canvas id="colorContrastPieChart"></canvas>
+                </div>
+                <div class="chart-container bar-chart" style="display: none;">
+                    <canvas id="colorContrastBarChart"></canvas>
+                </div>
+                <div class="description">
+                    <p>The system checks the contrast ratio between text and background.</p>
+                    <p>Score: <strong>92%</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Poster Layout Evaluation -->
+        <section class="evaluation-category PosterLayout">
+            <h2>Poster Layout Evaluation</h2>
+            <div class="evaluation-content">
+                <div class="chart-container pie-chart">
+                    <canvas id="PosterLayoutPieChart"></canvas>
+                </div>
+                <div class="chart-container bar-chart" style="display: none;">
+                    <canvas id="PosterLayoutBarChart"></canvas>
+                </div>
+                <div class="description">
+                    <p>The system evaluates the overall layout for logical structure, spacing, and flow.</p>
+                    <p>Score: <strong>92%</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hyperlinks Evaluation -->
+        <section class="evaluation-category hyperlinks">
+            <h2>Hyperlinks Evaluation</h2>
+            <div class="evaluation-content">
+                <div class="chart-container pie-chart">
+                    <canvas id="hyperlinksPieChart"></canvas>
+                </div>
+                <div class="chart-container bar-chart" style="display: none;">
+                    <canvas id="hyperlinksBarChart"></canvas>
+                </div>
+                <div class="description">
+                    <p>The system checks if hyperlinks are functional and accessible.</p>
+                    <p>Score: <strong>95%</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overall Poster Score Evaluation -->
+        <section class="evaluation-category overallScore">
+            <h2>Overall Poster Score</h2>
+            <div class="evaluation-content">
+                <div class="chart-container pie-chart">
+                    <canvas id="overallPieChart"></canvas>
+                </div>
+                <div class="chart-container bar-chart" style="display: none;">
+                    <canvas id="overallBarChart"></canvas>
+                </div>
+                <div class="description">
+                    <p>Overall score breakdown into Good, Average, and Poor categories.</p>
+                    <p>Score: <strong>Good</strong></p>
+                </div>
+            </div>
         </section>
     </div>
 </main>
 
-<!-- Footer Section -->
-<footer class="dashboard-footer">
-    <div class="container">
-        <p>&copy; 2024 Poster Evaluation Dashboard. All Rights Reserved.</p>
+<!-- Download Report Section -->
+<!-- Include jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+<section class="report-section">
+    <div class="download-report">
+        <button id="downloadReportBtn">Download Full Report</button>
     </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Poster Evaluation Dashboard. All Rights Reserved.</p>
 </footer>
 
-<!-- External JavaScript -->
-<script src="dashboard-script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="dashboard-script.js"></script> <!-- Link to external JavaScript file -->
 </body>
 </html>

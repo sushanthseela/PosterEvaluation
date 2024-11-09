@@ -3,211 +3,281 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #1a1a1a;
-    color: #ffffff;
+    background-color: #f5f5f5;
+    color: #050505;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+body.dark-mode {
+    background-color: #000000;
+    color: #f6f5f5;
 }
 
 /* Header */
 header {
-    background-color: #282828;
-    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+    background-color: #2e2867;
+    width: 100%;
+    color: #fff;
     position: sticky;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Logo Styles */
-.logo {
+.header-content {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
 }
 
-.logo img {
-    width: 40px;    /* Smaller logo size */
+/* Logo */
+header .logo {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+}
+
+header .logo img {
+    width: 40px;
     height: auto;
+    margin-left: 0;
 }
 
 /* Navigation Menu */
 .nav-menu ul {
     display: flex;
     list-style: none;
-    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu ul li {
+    margin-left: 20px;
 }
 
 .nav-menu ul li a {
-    color: #ffffff;
+    color: white;
     text-decoration: none;
-    padding: 12px 24px;
-    background-color: #3b317e;
-    border-radius: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 18px;
+    padding: 10px 20px;
 }
 
 .nav-menu ul li a:hover {
-    background-color: #5c4da7;
-    transform: translateY(-3px); /* Lift effect on hover */
+    color: #ddd;
 }
 
-.nav-menu .active {
-    background-color: #5c4da7;
-}
-
-/* Main Dashboard Section */
-.dashboard {
-    padding: 60px 0;
-}
-
-/* Dashboard Grid for Pie Charts */
-.evaluation-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 30px; /* Add space between each pie chart */
-    justify-items: center;
-    align-items: center;
-}
-
-.pie-chart {
-    background-color: #2d2d2d;
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    width: 200px;
-    height: 200px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.pie-chart:hover {
-    transform: scale(1.05); /* Zoom effect on hover */
-}
-
-.pie-chart canvas {
-    width: 140px;
-    height: 140px;
-}
-
-/* Spacing between sections */
-section {
-    margin-bottom: 40px; /* Add space between different sections */
-}
-
-/* Larger Score for Overall Analysis */
-.large-score-container {
+/* Controls Section */
+.controls {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    background-color: #2d2d2d;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    margin-top: 40px; /* Add space before the overall score section */
-}
-
-.large-score {
-    width: 240px;
-    height: 240px;
-    margin-bottom: 20px;
-}
-
-.large-score canvas {
-    width: 220px !important;
-    height: 220px !important;
-}
-
-/* Legend for Overall Score */
-.score-legend {
-    display: flex;
     gap: 20px;
-    margin-top: 20px;
 }
 
-.legend-item {
+.controls label {
+    color: white;
+    font-size: 18px;
+}
+
+.controls select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Position the Theme Toggle Button in the Top Right Corner */
+.theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.theme-toggle button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.5s;
+}
+
+body.dark-mode .theme-toggle button {
+    color: #E5E5F7;
+}
+
+/* Evaluation Sections */
+.evaluation-sections {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 10px;
+    transition: margin-left 0.3s;
+}
+
+/* Row Layout */
+.row {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
 }
 
-.legend-color {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    border-radius: 50%;
+.evaluation-category {
+    flex: 1 1 48%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.good { background-color: #27ae60; }  /* Green for Good */
-.average { background-color: #f39c12; } /* Yellow for Average */
-.poor { background-color: #e74c3c; }   /* Red for Poor */
+.evaluation-category h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #2e2867;
+    transition: color 0.3s;
+}
 
-/* Flexbox for Bar Chart and Overall Score */
-.graphs-side-by-side {
+.evaluation-content {
     display: flex;
     justify-content: space-between;
-    gap: 40px; /* Add space between the bar chart and overall score */
+    gap: 20px;
 }
 
-.chart-container, .large-score-container {
+.chart-container {
+    width: 50%;
+}
+
+.chart-container canvas {
+    width: 100%;
+    max-height: 250px;
+}
+
+.description {
+    width: 45%;
+}
+
+.description p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.description strong {
+    font-size: 1.1rem;
+    color: #2e2867;
+    transition: color 0.3s;
+}
+
+/* Dark Theme for Evaluation Sections */
+body.dark-mode .evaluation-category {
+    background-color: #2a2a2a;
+    color: #ddd;
+}
+
+body.dark-mode .evaluation-category h2,
+body.dark-mode .description strong {
+    color: #b0a0ff;
+}
+
+body.dark-mode .description p {
+    color: #ffffff;
+}
+
+/* Dark Mode for Chart Text */
+body.dark-mode .chart-container canvas {
+    color: #ffffff; /* This targets the chart labels */
+}
+
+/* Download Report Section */
+.report-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.download-report button {
+    padding: 12px 24px;
+    background-color: #2e2867;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.download-report button:hover {
+    background-color: #4b3c88;
+}
+
+body.dark-mode .download-report button {
+    background-color: #4b3c88;
+}
+
+body.dark-mode .download-report button:hover {
+    background-color: #5a4bb0;
+}
+
+
+/* Ensure the body takes up the full viewport height */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Main content should expand to fill available space */
+main {
     flex: 1;
 }
 
-.chart-container h2, .large-score-container h2 {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-/* Download Button */
-.download-btn {
-    background-color: #5c4da7;
-    color: white;
-    padding: 14px 28px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin: 40px auto;
-    width: 280px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.download-btn:hover {
-    background-color: #7a63d4;
-    transform: translateY(-3px); /* Lift effect */
-}
-
-.download-btn i {
-    margin-left: 10px;
-}
-
-/* Footer */
+/* Footer styling to stay at the bottom */
 footer {
-    background-color: #282828;
-    color: #fff;
-    text-align: center;
     padding: 20px;
+    text-align: center;
+    background-color: #2e2867;
+    color: white;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: auto; /* Pushes the footer to the bottom */
     width: 100%;
 }
 
+/* Dark mode styling for footer */
+body.dark-mode footer {
+    background-color: #3a355d;
+}
+
+
+
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .graphs-side-by-side {
+@media (max-width: 768px) {
+    .row {
         flex-direction: column;
     }
 
-    .evaluation-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    .evaluation-category {
+        flex: 1 1 100%;
+    }
+
+    .header-content {
+        flex-direction: column;
+    }
+
+    .evaluation-sections {
+        margin-left: 0;
+        padding: 10px;
     }
 }

@@ -6,21 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Poster - Poster Evaluation</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body>
+<body style="margin: 0; background: #cfcde3">
     <header>
         <div class="logo">
             <img src="images/logo.png" alt="Poster Evaluation Logo" class="logo-img">
-            <h1>Poster Evaluation</h1>
         </div>
 
         <!-- Navigation Menu -->
         <nav class="nav-menu">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Guide</a></li>
-                <li><a href="#">Help</a></li>
+                <li><a href="#" onclick="redirectToHome()">Home</a></li>
+                <li><a href="#"onclick="redirectToAboutpage()">About</a></li>
+                <li><a href="#">Audio</a></li>
             </ul>
         </nav>
 
@@ -33,7 +33,7 @@
     <section class="poster-view-section">
         <div class="poster-container">
             <h1>View Uploaded Poster</h1>
-            <img src="images/poster.png" alt="Uploaded Poster " class="poster-img">
+            <img src="" alt="Uploaded Poster" class="poster-img" style="display: none;"> <!-- Initially hidden -->
 
 
             <!-- Progress bar container -->
@@ -45,12 +45,12 @@
         </div>
     </section>
 
-
     <footer>
         <p>&copy; 2024 Poster Evaluation for Accessibility. All Rights Reserved.</p>
     </footer>
 
     <script src="view-script.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.1/dist/tesseract.min.js"></script>
 
+</body>
 </html>

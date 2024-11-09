@@ -9,18 +9,20 @@
 </head>
 
 <body>
+
+    <body style="margin: 0; background: #cfcde3"></body>
+    <!-- background: linear-gradient(to bottom, #cfcde3 50%, #fff 50%); -->
     <header>
         <div class="logo">
             <img src="images/logo.png" alt="Poster Evaluation Logo" class="logo-img">
-            <h1>Poster Evaluation</h1>
         </div>
 
         <!-- Navigation Menu -->
         <nav class="nav-menu">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Guide</a></li>
-                <li><a href="#">Help</a></li>
+                <li><a href="#" onclick="redirectToHome()">Home</a></li>
+                <li><a href="#"onclick="redirectToAboutpage()">About</a></li>
+                <li><a href="#">Audio</a></li>
             </ul>
         </nav>
 
@@ -32,17 +34,31 @@
     </header>
 
     <section class="upload-section">
-        <div class="upload-content">
-            <h1>Upload Poster for Evaluation</h1>
+        <div class="upload-poster-header">
+            <h1>Upload Poster for Evaluation</h1><span> </span>
             <p>Make sure your poster complies with accessibility standards.</p>
-            <form id="posterForm">
-                <input type="file" name="poster" id="poster-upload" accept="image/*" onchange="updateFileName()">
-                <button type="submit" id="submit-btn">Submit Poster</button>
-            </form>
-            <div id="progress-container" class="hidden">
-                <div id="progress-bar"></div>
-            </div>
         </div>
+
+        <div class="container-center-horizontal"></div>
+        <!-- Container Rectangle -->
+        <div class="container-rectangle">
+            <div class="dashed-border">
+                <div class="upload-content">
+                    <p>Click ‘Submit Poster’ or just drag and drop your poster right here and start <span
+                            class="highlight">evaluating</span>, We currently support PNG formats.
+                        File
+                        size must not exceed 10 MB.</p>
+
+                    <form id="posterForm">
+                        <input type="file" name="poster" id="poster-upload" accept="image/*"
+                            onchange="updateFileName()">
+                        <button type="submit" id="submit-btn">Submit Poster</button>
+                    </form>
+                    <div id="progress-container" class="hidden">
+                        <div id="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
     </section>
 
     <footer>
@@ -50,6 +66,15 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Function to handle form submission and prevent default behavior
+        function submitPoster(event) {
+            event.preventDefault();  // Prevents form from submitting and refreshing the page
+            alert('Poster submitted successfully!');
+            // You can add actual upload handling logic here if needed
+        }
+    </script>
 </body>
 
 </html>
+

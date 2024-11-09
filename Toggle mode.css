@@ -18,7 +18,7 @@ body {
 
 /* Light and Dark Mode Styles */
 body.dark-mode {
-    background-color: #1e1e1e;
+    background-color: #f4f4f4;
     color: #fff;
 }
 

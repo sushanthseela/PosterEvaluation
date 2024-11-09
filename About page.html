@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Poster Evaluation</title>
+    <link rel="stylesheet" href="About-page.css">
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="Poster Evaluation Logo" class="logo-img">
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#" onclick="redirectToHome()">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dark/Light Mode Toggle -->
+    <div class="theme-toggle">
+        <button id="theme-button">🌙</button>
+    </div>
+</header>
+
+<div class="container">
+    <h1>Poster Evaluation Metrics</h1>
+    <div class="flashcards">
+        <div class="flashcard" onclick="openPopup('nameEvaluation')">
+            <h2>Logos Evaluation</h2>
+            <p>The system checks the logos for size, clarity, and contrast, ensuring alt text is provided.</p>
+        </div>
+        <div class="flashcard" onclick="openPopup('authorEvaluation')">
+            <h2>Font Style Evaluation</h2>
+            <p>The system checks the font style for readability, ensuring clear fonts are used</p>
+        </div>
+        <div class="flashcard" onclick="openPopup('fontSize')">
+            <h2>Font Size Evaluation</h2>
+            <p>The system evaluates the font size for different sections (title, headings, body text).</p>
+        </div>
+        <div class="flashcard" onclick="openPopup('fontStyle')">
+            <h2>Color Contrast Evaluation</h2>
+            <p>The system checks the contrast ratio between text and background.</p>
+        </div>
+        <div class="flashcard" onclick="openPopup('logo')">
+            <h2>Poster Layout Evaluation</h2>
+            <p>The system evaluates the overall layout for logical structure, spacing, and flow.</p>
+        </div>
+        <div class="flashcard" onclick="openPopup('hyperlinks')">
+            <h2>Hyperlinks Evaluation</h2>
+            <p>The system checks if hyperlinks are functional and accessible.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Modal -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2 id="popupTitle"></h2>
+        <p id="popupText"></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Poster Evaluation for Accessibility. All Rights Reserved.</p>
+</footer>
+
+<script src="About page.js"></script>
+</body>
+
+</html>
